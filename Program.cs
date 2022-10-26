@@ -40,3 +40,34 @@ double result2 = k2 * x + b2;
 
 Console.WriteLine();
 Console.WriteLine($"({result1:f2}; {result2:f2})");
+
+//Доп.Задача (Если вдруг не можете решить 43, либо хотите решить для интереса)
+// Найти произведение всех элементов массива целых чисел, меньших заданного числа. Размерность массива – 10. Заполнение массива осуществить случайными числами от 50 до 100.
+Console.WriteLine();
+Console.WriteLine();
+
+size = 10;
+int[] arr = new int[size];
+GetArray(arr, 50, 100);
+Console.WriteLine("Введите число: ");
+int xNumber = int.Parse(Console.ReadLine()!);
+int sum = FindXCount(arr, xNumber);
+if (sum>1) Console.WriteLine("Произведение всех элементов массива целых чисел, меньших заданного числа равна - " + sum);
+else Console.WriteLine("В массиве не найдего элементов меньше заданного числа");
+
+
+int[] GetArray(int[] collection, int minValue, int maxValue){
+    for (int i = 0; i < collection.Length; i++) {
+        collection[i] = new Random().Next(minValue, maxValue+1);
+    }
+    return collection;
+}
+
+int FindXCount(int[] collection, int x){
+    int sum=1;
+    foreach (int item in collection)
+    {
+        if (item<x) sum*=item;
+    }
+    return sum;
+}
